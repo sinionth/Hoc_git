@@ -56,11 +56,10 @@ Kiếm tra remote<br>
 Thêm 1 remote<br>
 `git remote add [tên_remote] URL`<br>
 ## Sự khác nhau giữa clone, fetch và pull
-3 lệnh để lấy dữ liệu về từ repository nhưng có sự khác nhau:
-__git clone__:Sao chép toàn bộ dữ liệu trên repository và sao chép luôn các thiết lập về repository, tức là nó sẽ tự động tạo một master branch trên máy tính.Lệnh này chỉ nên sử dụng khi cần tạo mới Git repo trên máy tính với toàn bộ dữ liệu và thiết lập của một remote repository.<br>
-__git pull__:Tự động lấy toàn bộ dữ liệu từ remote repository và gộp vào cái branch hiện tại đang làm việc.
-__git fetch__:Lấy toàn bộ dữ liệu từ remote repository nhưng sẽ cho phép gộp thủ công vào một branch nào đó trên thư mục Git ở máy tính.
-## 
+3 lệnh để lấy dữ liệu về từ repository nhưng có sự khác nhau:<br>
+* __git clone__:Sao chép toàn bộ dữ liệu trên repository và sao chép luôn các thiết lập về repository, tức là nó sẽ tự động tạo một master branch trên máy tính.Lệnh này chỉ nên sử dụng khi cần tạo mới Git repo trên máy tính với toàn bộ dữ liệu và thiết lập của một remote repository.<br>
+* __git pull__:Tự động lấy toàn bộ dữ liệu từ remote repository và gộp vào cái branch hiện tại đang làm việc.<br>
+* __git fetch__:Lấy toàn bộ dữ liệu từ remote repository nhưng sẽ cho phép gộp thủ công vào một branch nào đó trên thư mục Git ở máy tính.<br>
 ## xem lịch sử commit
 Sử dụng câu lệnh
 `git log` để xem hoặc `gt log -p` để xem thông tin chi tiết hơn
