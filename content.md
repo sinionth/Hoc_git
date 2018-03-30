@@ -1,38 +1,57 @@
-## Cài đặt git trên ubuntu
+# 1.Giới thiệu sơ lược về Git
+__Git__ là một hệ thống quản lý phiên bản phân tán.Nói một cách đơn giản là ta có một mã nguồn và muốn những người khác có thể cùng phát triển mã nguồn đó.Thì git sẽ giúp chúng ta có thể chia sẻ mã nguồn,thông qua git ta có thể kiểm soát những tác động của người khác tới mã nguồn đó và những tác động sẽ chỉ được thực hiện khi ta đồng ý.Một kho chứa mã nguồn trong git gọi là repository ,nó giống như một cái thư mục vậy.Trong đó có các file cấu hình cho git và mã nguồn.
+# 2.Cài đặt git trên ubuntu
 `apt-get install git -y`
-## Cấu hình thiết lập tên, Email
+# 3.Cấu hình thiết lập tên, Email
 ```
 git config --global user.name "dung1101"
 git config --global user.email "mrbeo1221119@gmail.com"
 ```
 ## Kiểm tra cấu hình
-```
-cat ~/.gitconfig
-git --list
-```
-## Thiết lập repository
-Repository (kho chứa) là nơi lưu trữ mã nguồn và người khác có thể sao chép (clone) lại mã nguồn để làm việc.Có 2 loại repo:
-- Local Repository (Kho chứa trên máy cá nhân)
-- Remote Repository (Kho chứa trên một máy chủ từ xa).
-###  Tạo Local Repository
+Sau khi cấu hình xong ta có thể xem lại cấu hình bằng cầu lệnh `cat ~/.gitconfig` hoặc `git --list`
+# 4.Làm việc với Git
+## 4.1.Thiết lập repository
+Repository (kho chứa) là nơi lưu trữ mã nguồn và người khác có thể sao chép (clone/fetch/pull) lại mã nguồn để làm việc.
+<br>Có 2 loại repo:
+ -Local Repository 
+ -Remote Repository
+### Local Repository
+Là repo lưu trữ tại máy cá nhân.Ta có thể tạo một local repo hoặc sao chép remote report.<br>
+* Để tạo Local Repository sử dụng câu lệnh
 ```
 cd [thư mục muốn lưu trữ repo]
 git init [tên repo]
+
+ví dụ
+cd ~/mygit 
+git init MyFirstRepo
 ```
-###  Tạo Remote Repository
-Sử dụng Github làm repo remote, truy cập chia sẻ từ xa
-`git clone [repo link]` để clone về và làm việc
-## Thao tác cơ bản 
-### Thực hiện chỉnh sửa remote repo của chính mình
-![](so_do.png)
-<br>working directory: thư mục chứa repo mà ta đã clone về để làm việc
+Một thư mục có tên MyFirstRepo sẽ được tạo ra và trong đó có một thư mục .git chứa cấu hình cho repo.<br>
+* Sao chép remote repo có hướng dẫn ở bên dưới
+### Remote Repository
+Là repo lưu trữ tại một server từ xa.Để tạo remote repo ta có thể sử dụng trang github.com.<br>
+Sau khi đăng nhập tài khoản trên github
+![](./image/repo.PNG)<br>
+![](./image/tao_repo.PNG)
+## 4.2.Thao tác cơ bản với git
+### Chỉnh sửa remote repo của chính mình
+Nếu repo chưa có tại máy cá nhân thì ta phải clone(tạo bản sao) từ remote repo trên github<br>
+![](./image/clone.PNG)
+<br> câu lênh để clone `git clone [url]` ví dụ :`git clone https://github.com/sinionth/Hoc_git.git`
+Sau khi clone về máy ta tiến hành chỉnh sửa repo<br>
+![](./image/so_do.png)
+<br>work folow khi ta tiến hành chỉnh sửa một repo
+<br>working directory: thư mục chứa repo tại máy mà ta đã clone về để làm việc
 <br>staging area: là khu vực lưu trữ những thay đổi trên tập tin so sánh giữa repo chính và repo clone trước commit
 <br>clone repo: repo mà ta đã clone về từ remote repo
 <br>remote repo: repo mà ta cần làm việc 
 ```
 git add .
+# thêm những thay đổi vào staging area
 git commit -m "uptade repo"
+# thêm những thay đổi vào clone repo
 git push origin master
+# đẩy lên trên remote repo
 ```
 <br>Trước khi tiến hành ta phải sử dụng `git pull` để update những chỉnh sửa mới nhất của repo để tránh conflict
 <br>Khi ta commit nhầm, git cho phép ta undo lại bằng cách
@@ -45,16 +64,17 @@ git reset HEAD~ --hard
 <br>Sau khi commit thành công nhưng ta lại muốn thay đổi mà không cần phải tạo commit mới thì ta có thể ghi đè commit mới nhât bằng option `--amend` trong commit
 <br>Ta cũng có thể bỏ qua việc add vào staging area để commit thẳng bằng option `-a`
 ### Thực hiện chỉnh sửa remote repo của người khác
-<br>Trước tiên ta phải `fork` repo sau đó mới `clone` về để làm việc
+<br>Trước tiên ta phải `fork` repo sau đó mới `clone` về để làm việc<br>
+![](./image/fork.PNG)
 <br>Các bước tiếp theo ta làm như trên 
-<br>Do đây là repo của người khác nên sau khi push ta ta tạo một pull request mới để xin phép chủ sở hữu cho phép cập nhật chỉnh sửa
+<br>Do đây là repo của người khác nên sau khi push ta ta tạo một pull request mới để xin phép chủ sở hữu cho phép cập nhật chỉnh sửa<br>
+![](./image/pull_request.PNG)
 ### Chỉnh sửa remote repo
 Kiếm tra remote<br>
-`git remote -v`<br>
-Đổi tên remote<br>
-`git remote rename [tên_cũ] [tên_mới]`<br>
-Thêm 1 remote<br>
-`git remote add [tên_remote] URL`<br>
+`git remote -v`<br> 
+![](./image/remote.PNG)<br>
+Ta sẽ thấy origin.Đây là tên của remote repo tạo mặc định khi ta clone , ta hoàn toàn có thể đổi được
+<br>`git remote rename [tên_cũ] [tên_mới]`
 ## Sự khác nhau giữa clone, fetch và pull
 3 lệnh để lấy dữ liệu về từ repository nhưng có sự khác nhau:<br>
 * __git clone__:Sao chép toàn bộ dữ liệu trên repository và sao chép luôn các thiết lập về repository, tức là nó sẽ tự động tạo một master branch trên máy tính.Lệnh này chỉ nên sử dụng khi cần tạo mới Git repo trên máy tính với toàn bộ dữ liệu và thiết lập của một remote repository.<br>
@@ -62,4 +82,4 @@ Thêm 1 remote<br>
 * __git fetch__:Lấy toàn bộ dữ liệu từ remote repository nhưng sẽ cho phép gộp thủ công vào một branch nào đó trên thư mục Git ở máy tính.<br>
 ## xem lịch sử commit
 Sử dụng câu lệnh
-`git log` để xem hoặc `gt log -p` để xem thông tin chi tiết hơn
+`git log` để xem hoặc `git log -p` để xem thông tin chi tiết hơn
