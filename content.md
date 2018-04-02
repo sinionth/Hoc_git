@@ -75,11 +75,45 @@ Kiếm tra remote<br>
 ![](./image/remote.PNG)<br>
 Ta sẽ thấy origin.Đây là tên của remote repo tạo mặc định khi ta clone , ta hoàn toàn có thể đổi được
 <br>`git remote rename [tên_cũ] [tên_mới]`
-## Sự khác nhau giữa clone, fetch và pull
+# 5.Sự khác nhau giữa clone, fetch và pull
 3 lệnh để lấy dữ liệu về từ repository nhưng có sự khác nhau:<br>
 * __git clone__:Sao chép toàn bộ dữ liệu trên repository và sao chép luôn các thiết lập về repository, tức là nó sẽ tự động tạo một master branch trên máy tính.Lệnh này chỉ nên sử dụng khi cần tạo mới Git repo trên máy tính với toàn bộ dữ liệu và thiết lập của một remote repository.<br>
 * __git pull__:Tự động lấy toàn bộ dữ liệu từ remote repository và gộp vào cái branch hiện tại đang làm việc.<br>
 * __git fetch__:Lấy toàn bộ dữ liệu từ remote repository nhưng sẽ cho phép gộp thủ công vào một branch nào đó trên thư mục Git ở máy tính.<br>
-## xem lịch sử commit
+# 6.xem lịch sử commit
 Sử dụng câu lệnh
 `git log` để xem hoặc `git log -p` để xem thông tin chi tiết hơn
+# 7.Branch - Làm việc với nhánh
+## 7.1.Cơ bản về branch
+Branch dùng để phân nhánh và ghi lại luồng làm việc trong git.Mục đích của branch đễ hỗ trợ làm việc song song.Khi khởi tạo repository hoặc clone một repository, sẽ có một nhánh (branch) chính tên là master (có thể hiểu master là thân cây). Đây là branch chứa toàn bộ các mã nguồn chính trong repository.<br>
+Khi ta có 1 vấn đề cần đẩy lên repository mà không muốn làm ảnh hưởng tới branch `master` thì ta sẽ tạo 1 branch khác để thay thế.Từ đó các thay đổi trên branch master, branch mới sẽ diễn ra độc lập không ảnh hương tới nhau.
+## 7.2.Thao tác với branch
+## Tạo một branch
+```
+git branch branch_name 
+  
+git branch dung
+```
+## Liệt kê các branch
+` git branch`
+## Chuyển đổi giữa các branch
+```
+git checkout [branch_name]
+
+git checkout dung
+git checkout master
+```
+## Kiểm tra xem hiện tại đang ở nhánh nào
+`cat ~/.git/HEAD` hoặc `git status`
+## push dữ liệu lên remote repo
+```
+git push [tên repo] [tên nhánh]
+
+git push origin dung
+```
+## xóa branch
+```
+git branch -d [branch_name]
+
+git branch -d dung
+```
