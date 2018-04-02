@@ -65,5 +65,37 @@ __git fetch__:Lấy toàn bộ dữ liệu từ remote repository nhưng sẽ ch
 Sử dụng câu lệnh
 `git log` để xem hoặc `gt log -p` để xem thông tin chi tiết hơn
 # 7.Branch - Làm việc với nhánh
-Branch dùng để phân nhánh và ghi lại luồng làm việc trong git.Mục đích của branch đễ hỗ trợ làm việc song song.Khi khởi tạo repository hoặc clone một repository, sẽ có một nhánh (branch) chính tên là master (có thể hiểu master là thân cây). Đây là branch chứa toàn bộ các mã nguồn chính trong repository.
+## 7.1.Cơ bản về branch
+Branch dùng để phân nhánh và ghi lại luồng làm việc trong git.Mục đích của branch đễ hỗ trợ làm việc song song.Khi khởi tạo repository hoặc clone một repository, sẽ có một nhánh (branch) chính tên là master (có thể hiểu master là thân cây). Đây là branch chứa toàn bộ các mã nguồn chính trong repository.<br>
+Khi ta có 1 vấn đề cần đẩy lên repository mà không muốn làm ảnh hưởng tới branch `master` thì ta sẽ tạo 1 branch khác để thay thế.Từ đó các thay đổi trên branch master, branch mới sẽ diễn ra độc lập không ảnh hương tới nhau.
+## 7.2.Thao tác với branch
+## Tạo một branch
+```
+git branch branch_name 
+  
+git branch dung
+```
+## Liệt kê các branch
+` git branch`
+## Chuyển đổi giữa các branch
+```
+git checkout [branch_name]
+
+git checkout dung
+git checkout master
+```
+## Kiểm tra xem hiện tại đang ở nhánh nào
+`cat ~/.git/HEAD` hoặc `git status`
+## push dữ liệu lên remote repo
+```
+git push [tên repo] [tên nhánh]
+
+git push origin dung
+```
+## xóa branch
+```
+git branch -d [branch_name]
+
+git branch -d dung
+```
 
