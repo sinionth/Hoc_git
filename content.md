@@ -117,3 +117,29 @@ git branch -d [branch_name]
 
 git branch -d dung
 ```
+## 8.Merge & Rebase
+Đây là 2 cách để gộp nhánh này vào nhánh khác<br>
+Ví dụ có 2 nhánh `dung` và `master` để tích hợp nội dung từ nhánh `master` vào nhánh `dung` ta có thể làm như sau
+```
+#Cách 1
+git checkout dung
+git merge master
+#hoặc rút gọn 
+git merge master dung
+
+#Cách 2
+git checkout dung
+git rebase master
+```
+### Sự khác nhau của rebase và merge<br/>
+* merge:các thay đổi của `master` từ lần gộp gàn nhất của 2 nhánh sẽ được commit vào `dung`
+![](../images/git-merger-base-2.png)
+* rebase:đưa tất cả những commit mới tạo ở nhánh `dung` nối tiếp vào nhánh `master` ve thay đổi lịch sử project
+![](../images/git-merger-base-3.png)
+### Lưu ý khi sử dụng 2 phương pháp
+- Sử dụng git rebase nếu như bạn muốn các sự thay đổi thuộc về branch của bạn luôn luôn là mới nhất. Và bạn có thể log một cách có hệ thống dễ nhìn, dễ tracking sao này.
+- Git rebase thì nên dùng trên branch riêng, nó sẽ đẩy history commit của branch lên, history commit sẽ tách biệt hẳn với những commit từ branch khác, rất tiện cho quản lý các branch. 
+- Bạn sử dụng git merge nếu bạn muốn sắp xếp các commit theo mặc định. Bạn không biết về những gì mình làm gì trên branch đó thì dùng merge cho đảm bảo việc tracking sao này có thể tốn nhiều thời gian lần mò.
+- Git merge là làm cho git commit list dài ra. Nếy áp dụng cho branch riêng thì không phù hợp vì khó trace log vì nhiều commit dài không phải do bạn tạo ra?. Nhất là trong 1 dự án lớn, việc check log vài tháng sẽ là 1 vấn đề.
+- Cả rebase và merge sẽ conflict nếu không update code thường xuyên.
+
